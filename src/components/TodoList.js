@@ -15,6 +15,12 @@ export default function TodoList() {
 
   }
 
+  const removeTodo = id => {
+    const removeArr = [...todos].filter(todo => todo.id !== id)
+    setTodos(removeArr)
+  }
+
+
   const completeTodo = id => {
     let updatedTodos = todos.map(todo => {
       if(todo.id === id) {
@@ -29,7 +35,7 @@ export default function TodoList() {
     <div>
       <h1>What's the plan</h1>
       <TodoForm onSubmit={addTodo}/>
-      <Todo todos={todos} completeTodo={completeTodo}/>
+      <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}/>
     </div>
   );
 }
